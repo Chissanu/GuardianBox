@@ -1,10 +1,11 @@
 import psycopg2
 from psycopg2 import sql
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+from datetime import datetime
 
 DATABASE = "access_log_database"
 DATABASE_USER = "postgres"
-DATABASE_PASS = "insert_db_password"
+DATABASE_PASS = "Chissanu1"
 
 def get_db_connection():
     conn = psycopg2.connect(
@@ -36,30 +37,56 @@ def create_database():
             conn.close()
 
 def create_log_table():
-    try:
-        command = ("""
+    command = ("""
         CREATE TABLE logs (
             id SERIAL PRIMARY KEY,
+            weight FLOAT DEFAULT 0.0,
             time_open TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             time_close TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
         """)
+    insert_to_database(command)
+
+def insert_to_database(command):
+    try:
         conn = get_db_connection()
         cur = conn.cursor()
         cur.execute(command)
-
         conn.commit()
-        print("access_log table is created")
-    except (Exception, psycopg2.DatabaseError) as error:
-        print("Error when creating table", error)
-    
+        print("Success")
+    except(Exception, psycopg2.DatabaseError) as error:
+        print("Error executing SQL command \n" + command)
+        print(error)
     finally:
         if conn is not None:
             cur.close()
             conn.close()
 
-opt = int(input("Menu: \n1.Create DB \n2.Create Table\n>"))
-if opt == 1:
-    create_database()
-elif opt == 2:
-    create_log_table()
+def openCrate():
+    timestamp_val = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    # Open crate sum
+    crateOpen = "t"
+    while crateOpen == "t":
+        crateOpen = input("Still open? t/f >")
+    timeclose_val = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    weight = getWeight()
+
+    command = f"INSERT INTO logs (weight,time_open, time_close) values ('{weight}','{timestamp_val}','{timeclose_val}')"
+    insert_to_database(command)
+
+def getWeight():
+    # Psudo weight
+    return 5.1
+
+
+opt = None
+while opt != 0:
+    if opt == 1:
+        create_database()
+    elif opt == 2:
+        create_log_table()
+    elif opt == 3:
+        openCrate()
+    opt = int(input("Menu: \n0.Exit\n1.Create DB \n2.Create Table\n3.Open Crate \n>"))
