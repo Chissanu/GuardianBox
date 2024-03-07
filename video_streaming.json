@@ -1,0 +1,597 @@
+[
+    {
+        "id": "e367c69d0a648e2d",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "bcfdc528.e179f8",
+        "type": "base64",
+        "z": "e367c69d0a648e2d",
+        "name": "Encode",
+        "action": "",
+        "property": "payload",
+        "x": 720,
+        "y": 400,
+        "wires": [
+            [
+                "9ac64835.1ca948"
+            ]
+        ]
+    },
+    {
+        "id": "9ac64835.1ca948",
+        "type": "ui_template",
+        "z": "e367c69d0a648e2d",
+        "group": "921d18b4552d16c0",
+        "name": "Camera 1",
+        "order": 1,
+        "width": 12,
+        "height": 9,
+        "format": "<img alt=\"stream test\" src=\"data:image/jpg;base64,{{msg.payload}}\" />\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 863.2569236755371,
+        "y": 400.4166660308838,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f3dc375f.005998",
+        "type": "change",
+        "z": "e367c69d0a648e2d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "http://172.20.10.4:5000/camera-1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 320,
+        "wires": [
+            [
+                "ac461010.24496"
+            ]
+        ]
+    },
+    {
+        "id": "e32d48eb.0b1358",
+        "type": "change",
+        "z": "e367c69d0a648e2d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pause",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 360,
+        "wires": [
+            [
+                "ac461010.24496"
+            ]
+        ]
+    },
+    {
+        "id": "8d2e7e10.68e59",
+        "type": "change",
+        "z": "e367c69d0a648e2d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "resume",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 400,
+        "wires": [
+            [
+                "ac461010.24496"
+            ]
+        ]
+    },
+    {
+        "id": "b9d3d5af.e7d4f8",
+        "type": "change",
+        "z": "e367c69d0a648e2d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "stop",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 440,
+        "wires": [
+            [
+                "ac461010.24496"
+            ]
+        ]
+    },
+    {
+        "id": "ac461010.24496",
+        "type": "multipart-decoder",
+        "z": "e367c69d0a648e2d",
+        "name": "Chamber 1",
+        "ret": "bin",
+        "url": "",
+        "tls": "",
+        "authentication": "none",
+        "delay": "5",
+        "maximum": "10000000",
+        "blockSize": "1",
+        "enableLog": "off",
+        "x": 520,
+        "y": 400,
+        "wires": [
+            [
+                "bcfdc528.e179f8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "e7ecd39ac005d44d",
+        "type": "base64",
+        "z": "e367c69d0a648e2d",
+        "name": "Encode",
+        "action": "",
+        "property": "payload",
+        "x": 720,
+        "y": 600,
+        "wires": [
+            [
+                "50978a13e3f1250e"
+            ]
+        ]
+    },
+    {
+        "id": "50978a13e3f1250e",
+        "type": "ui_template",
+        "z": "e367c69d0a648e2d",
+        "group": "e0583dd591296435",
+        "name": "Camera 2",
+        "order": 1,
+        "width": 12,
+        "height": 9,
+        "format": "<img alt=\"stream test\" src=\"data:image/jpg;base64,{{msg.payload}}\" />\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 863.2569236755371,
+        "y": 600.4166660308838,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "845ec02bb13911ba",
+        "type": "change",
+        "z": "e367c69d0a648e2d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "http://172.20.10.4:5000/camera-2",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 520,
+        "wires": [
+            [
+                "1b373778318f5c2d"
+            ]
+        ]
+    },
+    {
+        "id": "876ed308ecabb863",
+        "type": "change",
+        "z": "e367c69d0a648e2d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pause",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 560,
+        "wires": [
+            [
+                "1b373778318f5c2d"
+            ]
+        ]
+    },
+    {
+        "id": "f3633fede82f71c9",
+        "type": "change",
+        "z": "e367c69d0a648e2d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "resume",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 600,
+        "wires": [
+            [
+                "1b373778318f5c2d"
+            ]
+        ]
+    },
+    {
+        "id": "8e07605773f1f223",
+        "type": "change",
+        "z": "e367c69d0a648e2d",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "stop",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 640,
+        "wires": [
+            [
+                "1b373778318f5c2d"
+            ]
+        ]
+    },
+    {
+        "id": "1b373778318f5c2d",
+        "type": "multipart-decoder",
+        "z": "e367c69d0a648e2d",
+        "name": "Chamber 2",
+        "ret": "bin",
+        "url": "",
+        "tls": "",
+        "authentication": "none",
+        "delay": "5",
+        "maximum": "10000000",
+        "blockSize": "1",
+        "enableLog": "on",
+        "x": 520,
+        "y": 600,
+        "wires": [
+            [
+                "e7ecd39ac005d44d"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "eb19800246974e18",
+        "type": "ui_button",
+        "z": "e367c69d0a648e2d",
+        "name": "",
+        "group": "921d18b4552d16c0",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Start Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "payload",
+        "topicType": "msg",
+        "x": 90,
+        "y": 320,
+        "wires": [
+            [
+                "f3dc375f.005998"
+            ]
+        ]
+    },
+    {
+        "id": "981e75d397b8fcd2",
+        "type": "ui_button",
+        "z": "e367c69d0a648e2d",
+        "name": "",
+        "group": "e0583dd591296435",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Start Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "payload",
+        "topicType": "msg",
+        "x": 90,
+        "y": 520,
+        "wires": [
+            [
+                "845ec02bb13911ba"
+            ]
+        ]
+    },
+    {
+        "id": "f1bc0d75446d1319",
+        "type": "ui_button",
+        "z": "e367c69d0a648e2d",
+        "name": "",
+        "group": "921d18b4552d16c0",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Pause Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 100,
+        "y": 360,
+        "wires": [
+            [
+                "e32d48eb.0b1358"
+            ]
+        ]
+    },
+    {
+        "id": "a63be21b2913a0f7",
+        "type": "ui_button",
+        "z": "e367c69d0a648e2d",
+        "name": "",
+        "group": "921d18b4552d16c0",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Resume Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 100,
+        "y": 400,
+        "wires": [
+            [
+                "8d2e7e10.68e59"
+            ]
+        ]
+    },
+    {
+        "id": "f74a27203ac2b104",
+        "type": "ui_button",
+        "z": "e367c69d0a648e2d",
+        "name": "",
+        "group": "921d18b4552d16c0",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Stop Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 90,
+        "y": 440,
+        "wires": [
+            [
+                "b9d3d5af.e7d4f8"
+            ]
+        ]
+    },
+    {
+        "id": "c86876bae3822669",
+        "type": "ui_button",
+        "z": "e367c69d0a648e2d",
+        "name": "",
+        "group": "e0583dd591296435",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Stop Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 90,
+        "y": 640,
+        "wires": [
+            [
+                "8e07605773f1f223"
+            ]
+        ]
+    },
+    {
+        "id": "2f1cdbc089f92a3c",
+        "type": "ui_button",
+        "z": "e367c69d0a648e2d",
+        "name": "",
+        "group": "e0583dd591296435",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Resume Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 100,
+        "y": 600,
+        "wires": [
+            [
+                "f3633fede82f71c9"
+            ]
+        ]
+    },
+    {
+        "id": "df0daf15015d0a05",
+        "type": "ui_button",
+        "z": "e367c69d0a648e2d",
+        "name": "",
+        "group": "e0583dd591296435",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Pause Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 100,
+        "y": 560,
+        "wires": [
+            [
+                "876ed308ecabb863"
+            ]
+        ]
+    },
+    {
+        "id": "921d18b4552d16c0",
+        "type": "ui_group",
+        "name": "Chamber 1",
+        "tab": "91a363c042b4c70d",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e0583dd591296435",
+        "type": "ui_group",
+        "name": "Chamber 2",
+        "tab": "91a363c042b4c70d",
+        "order": 3,
+        "disp": true,
+        "width": 12,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "91a363c042b4c70d",
+        "type": "ui_tab",
+        "name": "CameraTest",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
