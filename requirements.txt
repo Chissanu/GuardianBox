@@ -1,3 +1,4 @@
 opencv-python
 pyncclient
 python-dotenv
+hcsr04sensor
