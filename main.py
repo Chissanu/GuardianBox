@@ -1,7 +1,9 @@
 import psycopg2
+import random
 from psycopg2 import sql
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from datetime import datetime
+
 
 DATABASE = "access_log_database"
 DATABASE_USER = "postgres"
@@ -77,8 +79,9 @@ def openCrate():
     insert_to_database(command)
 
 def getWeight():
+    rand_weight = random.randint(1,50)
     # Psudo weight
-    return 5.1
+    return rand_weight
 
 
 opt = None
