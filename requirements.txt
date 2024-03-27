@@ -2,3 +2,4 @@ opencv-python
 pyncclient
 python-dotenv
 hcsr04sensor
+psycopg2-binary

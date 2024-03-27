@@ -3,10 +3,11 @@ import random
 from psycopg2 import sql
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 from datetime import datetime
-
+from Controller import Contoller
 
 DATABASE = "access_log_database"
-DATABASE_USER = "postgres"
+DEFAULT_DB = "postgres"
+DATABASE_USER = "pi"
 DATABASE_PASS = "Chissanu1"
 
 def get_db_connection():
@@ -21,7 +22,7 @@ def get_db_connection():
 
 def create_database():
     try:
-        conn = psycopg2.connect(f"user={DATABASE_USER} password={DATABASE_PASS}")
+        conn = psycopg2.connect(f"user={DATABASE_USER} password={DATABASE_PASS} dbname={DEFAULT_DB}")
         conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         cur = conn.cursor()
 
@@ -30,7 +31,7 @@ def create_database():
         print("Database created successfully")
 
     # Create database if not exists
-    except (Exception, psycopg2.DatabaseError) as error:
+    except (Exception, psycopg2.DatabaseError) as error: 
         print("Error when creating database", error)
 
     finally:
@@ -83,6 +84,7 @@ def getWeight():
     # Psudo weight
     return rand_weight
 
+controller = Contoller(4)
 
 opt = None
 while opt != 0:
@@ -92,4 +94,8 @@ while opt != 0:
         create_log_table()
     elif opt == 3:
         openCrate()
-    opt = int(input("Menu: \n0.Exit\n1.Create DB \n2.Create Table\n3.Open Crate \n>"))
+    elif opt == 4:
+        controller.turn_on()
+    elif opt == 5:
+        controller.turn_off()
+    opt = int(input("Menu: \n0.Exit\n1.Create DB \n2.Create Table\n3.Open Crate \n4.Turn on light \n5.Turn off light \n> "))
