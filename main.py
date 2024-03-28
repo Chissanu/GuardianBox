@@ -1,5 +1,6 @@
 import psycopg2
 import time
+import json
 import paho.mqtt.client as mqtt
 from psycopg2 import sql
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
@@ -111,7 +112,18 @@ def check_if_item_inside():
 def get_logs():
     command =  f"SELECT * from logs"
     rows = insert_to_database(command, "QUERY")
-    print(rows)
+    data = {}
+    for row in rows:
+        data = {
+            "id" : row[0],
+            "chamber_id" : row[1],
+            "time_open" : row[2].strftime("%d-%m-%Y %H:%M:%S"),
+            "time_close" : row[3].strftime("%d-%m-%Y %H:%M:%S")
+        }
+        
+        print(data)
+    # print(rows)
+    client.publish("GuardianBox/logs-database", "2")
 
     
 
