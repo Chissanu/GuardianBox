@@ -47,6 +47,7 @@ def create_log_table():
     command = ("""
         CREATE TABLE logs (
             id SERIAL PRIMARY KEY,
+            chamber_id VARCHAR,
             time_open TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             time_close TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
@@ -73,12 +74,13 @@ def openCrate():
 
     # Open crate sum
     crateOpen = "t"
+    chamber_id = str(input("Which chamber"))
     while crateOpen == "t":
         crateOpen = input("Still open? t/f >")
     timeclose_val = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 
-    command = f"INSERT INTO logs (time_open, time_close) values ('{timestamp_val}','{timeclose_val}')"
+    command = f"INSERT INTO logs (chamber_id,time_open, time_close) values ('{chamber_id}', '{timestamp_val}','{timeclose_val}')"
     insert_to_database(command)
 
 def check_if_item_inside():
@@ -137,20 +139,19 @@ client.subscribe("GuardianBox/SonicCmd", 0)
 opt = None
 while opt != 0:
     client.loop_start()
-    check_if_item_inside()
     # client.publish("GuardianBox/SonicSta", "hehe")
-    # if opt == 1:
-    #     create_database()
-    # elif opt == 2:
-    #     create_log_table()
-    # elif opt == 3:
-    #     openCrate()
-    # elif opt == 4:
-    #     controller.turn_on()
-    # elif opt == 5:
-    #     controller.turn_off()
-    # elif opt == 6:
-    #     check_if_item_inside()
+    if opt == 1:
+        create_database()
+    elif opt == 2:
+        create_log_table()
+    elif opt == 3:
+        openCrate()
+    elif opt == 4:
+        controller.turn_on()
+    elif opt == 5:
+        controller.turn_off()
+    elif opt == 6:
+        check_if_item_inside()
     client.loop_stop()
-    # opt = int(input("Menu: \n0.Exit\n1.Create DB \n2.Create Table\n3.Open Crate \n4.Turn on light \n5.Turn off light \n> "))
+    opt = int(input("Menu: \n0.Exit\n1.Create DB \n2.Create Table\n3.Open Crate \n4.Turn on light \n5.Turn off light \n> "))
 # client.loop_forever()
