@@ -52,15 +52,20 @@ def create_log_table():
             time_close TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
         """)
-    insert_to_database(command)
+    insert_to_database(command,"CREATE")
 
-def insert_to_database(command):
+def insert_to_database(command,operation):
     try:
         conn = get_db_connection()
         cur = conn.cursor()
         cur.execute(command)
         conn.commit()
+
+        if operation == "QUERY":
+            rows = cur.fetchall()
+            return rows
         print("Success")
+        
     except(Exception, psycopg2.DatabaseError) as error:
         print("Error executing SQL command \n" + command)
         print(error)
@@ -79,9 +84,8 @@ def openCrate():
         crateOpen = input("Still open? t/f >")
     timeclose_val = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-
     command = f"INSERT INTO logs (chamber_id,time_open, time_close) values ('{chamber_id}', '{timestamp_val}','{timeclose_val}')"
-    insert_to_database(command)
+    insert_to_database(command,"INSERT")
 
 def check_if_item_inside():
     print("===Door unlocked===")
@@ -104,7 +108,11 @@ def check_if_item_inside():
 
         previous_message = message
         
-        # time.sleep(0.25)
+def get_logs():
+    command =  f"SELECT * from logs"
+    rows = insert_to_database(command, "QUERY")
+    print(rows)
+
     
 
 
@@ -152,6 +160,8 @@ while opt != 0:
         controller.turn_off()
     elif opt == 6:
         check_if_item_inside()
+    elif opt == 7:
+        get_logs()
     client.loop_stop()
     opt = int(input("Menu: \n0.Exit\n1.Create DB \n2.Create Table\n3.Open Crate \n4.Turn on light \n5.Turn off light \n> "))
 # client.loop_forever()
