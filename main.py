@@ -90,10 +90,14 @@ def check_if_item_inside():
         if distance <= 28.4:
             print("Occupied")
             # print("====Door locked===")
-            client.publish("GuardianBox/sonic-1-status", "Occupied")
+            if message != "Occupied":
+                message = "Occupied"
+                client.publish("GuardianBox/sonic-1-status", message)
         else:
             print("vacant")
-            client.publish("GuardianBox/sonic-1-status", "Vacant")
+            if message != "Vacant":
+                message = "Vacant"
+                client.publish("GuardianBox/sonic-1-status", message)
         
         # time.sleep(0.25)
     
