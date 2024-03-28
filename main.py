@@ -84,20 +84,23 @@ def openCrate():
 def check_if_item_inside():
     print("===Door unlocked===")
     doorOpen = True
+    message = None
+    previous_message = None
     while doorOpen:
         distance = controller.read_ultrasonic()
         print(distance)
         if distance <= 28.4:
             print("Occupied")
             # print("====Door locked===")
-            if message != "Occupied":
-                message = "Occupied"
-                client.publish("GuardianBox/sonic-1-status", message)
+            message = "Occupied"
         else:
             print("vacant")
-            if message != "Vacant":
-                message = "Vacant"
-                client.publish("GuardianBox/sonic-1-status", message)
+            message = "Vacant"
+
+        if previous_message != message:
+            client.publish("GuardianBox/sonic-1-status", message)
+
+        previous_message = message
         
         # time.sleep(0.25)
     
