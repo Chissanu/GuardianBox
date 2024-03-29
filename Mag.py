@@ -51,20 +51,8 @@ client.subscribe("Magna/LampCmd", 0)
 # Loop forever
 while True:
     client.loop_start()
-
-    distance = round(x.basic_distance(PIN, echo),2)
-
-    if distance <= 28.4:
-        client.publish("Load", str(distance))
-        print("Item detected")
-
-    print("The distance at  20 Celsius is {} cm's".format(distance))
-    # cleanup gpio pins.
-    GPIO.cleanup((PIN, echo))
-
-    time.sleep(1)
-
     # Stop MQTT client loop to ensure connection maintenance
     client.loop_stop()
 
-# client.loop_forever()
+# # client.loop_forever()
+# GPIO.output(21, GPIO.LOW)
