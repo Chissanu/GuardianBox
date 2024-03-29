@@ -1,0 +1,42 @@
+[
+    {
+        "id": "969c7023df0fe2cd",
+        "type": "ui_text",
+        "z": "e367c69d0a648e2d",
+        "group": "7e492a35be12167f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Parcel Status",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 550,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "7e492a35be12167f",
+        "type": "ui_group",
+        "name": "Chamber 1",
+        "tab": "b54b8e5d4924aebe",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b54b8e5d4924aebe",
+        "type": "ui_tab",
+        "name": "Chamber Control",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
