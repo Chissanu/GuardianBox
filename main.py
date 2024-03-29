@@ -112,7 +112,8 @@ def check_if_item_inside():
 def get_logs():
     command =  f"SELECT * from logs"
     rows = insert_to_database(command, "QUERY")
-    data = {}
+    datas = {}
+    count = 1
     for row in rows:
         data = {
             "id" : row[0],
@@ -120,10 +121,13 @@ def get_logs():
             "time_open" : row[2].strftime("%d-%m-%Y %H:%M:%S"),
             "time_close" : row[3].strftime("%d-%m-%Y %H:%M:%S")
         }
-        
-        print(data)
-    # print(rows)
-    client.publish("GuardianBox/logs-database", "2")
+        datas[count] = data
+        count += 1
+
+    print(datas)
+    datas_json = json.dumps(datas)
+    
+    client.publish("GuardianBox/logs-database", datas_json)
 
     
 
