@@ -1,5 +1,6 @@
 import psycopg2
 import time
+import json
 import paho.mqtt.client as mqtt
 from psycopg2 import sql
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
@@ -47,19 +48,25 @@ def create_log_table():
     command = ("""
         CREATE TABLE logs (
             id SERIAL PRIMARY KEY,
+            chamber_id VARCHAR,
             time_open TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             time_close TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
         """)
-    insert_to_database(command)
+    insert_to_database(command,"CREATE")
 
-def insert_to_database(command):
+def insert_to_database(command,operation):
     try:
         conn = get_db_connection()
         cur = conn.cursor()
         cur.execute(command)
         conn.commit()
+
+        if operation == "QUERY":
+            rows = cur.fetchall()
+            return rows
         print("Success")
+        
     except(Exception, psycopg2.DatabaseError) as error:
         print("Error executing SQL command \n" + command)
         print(error)
@@ -73,13 +80,13 @@ def openCrate():
 
     # Open crate sum
     crateOpen = "t"
+    chamber_id = str(input("Which chamber"))
     while crateOpen == "t":
         crateOpen = input("Still open? t/f >")
     timeclose_val = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-
-    command = f"INSERT INTO logs (time_open, time_close) values ('{timestamp_val}','{timeclose_val}')"
-    insert_to_database(command)
+    command = f"INSERT INTO logs (chamber_id,time_open, time_close) values ('{chamber_id}', '{timestamp_val}','{timeclose_val}')"
+    insert_to_database(command,"INSERT")
 
 def check_if_item_inside():
     print("===Door unlocked===")
@@ -102,7 +109,26 @@ def check_if_item_inside():
 
         previous_message = message
         
-        # time.sleep(0.25)
+def get_logs():
+    command =  f"SELECT * from logs"
+    rows = insert_to_database(command, "QUERY")
+    datas = {}
+    count = 1
+    for row in rows:
+        data = {
+            "id" : row[0],
+            "chamber_id" : row[1],
+            "time_open" : row[2].strftime("%d-%m-%Y %H:%M:%S"),
+            "time_close" : row[3].strftime("%d-%m-%Y %H:%M:%S")
+        }
+        datas[count] = data
+        count += 1
+
+    print(datas)
+    datas_json = json.dumps(datas)
+    
+    client.publish("GuardianBox/logs-database", datas_json)
+
     
 
 
@@ -137,20 +163,21 @@ client.subscribe("GuardianBox/SonicCmd", 0)
 opt = None
 while opt != 0:
     client.loop_start()
-    check_if_item_inside()
     # client.publish("GuardianBox/SonicSta", "hehe")
-    # if opt == 1:
-    #     create_database()
-    # elif opt == 2:
-    #     create_log_table()
-    # elif opt == 3:
-    #     openCrate()
-    # elif opt == 4:
-    #     controller.turn_on()
-    # elif opt == 5:
-    #     controller.turn_off()
-    # elif opt == 6:
-    #     check_if_item_inside()
+    if opt == 1:
+        create_database()
+    elif opt == 2:
+        create_log_table()
+    elif opt == 3:
+        openCrate()
+    elif opt == 4:
+        controller.turn_on()
+    elif opt == 5:
+        controller.turn_off()
+    elif opt == 6:
+        check_if_item_inside()
+    elif opt == 7:
+        get_logs()
     client.loop_stop()
-    # opt = int(input("Menu: \n0.Exit\n1.Create DB \n2.Create Table\n3.Open Crate \n4.Turn on light \n5.Turn off light \n> "))
+    opt = int(input("Menu: \n0.Exit\n1.Create DB \n2.Create Table\n3.Open Crate \n4.Turn on light \n5.Turn off light \n> "))
 # client.loop_forever()
