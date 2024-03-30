@@ -1,0 +1,130 @@
+[
+    {
+        "id": "eff3fa8c219e502f",
+        "type": "ui_form",
+        "z": "ff1aaeb07a2d4250",
+        "name": "",
+        "label": "",
+        "group": "921d18b4552d16c0",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Server URL",
+                "value": "url",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Username",
+                "value": "username",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Password",
+                "value": "password",
+                "type": "password",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Video Directory",
+                "value": "directory",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "url": "",
+            "username": "",
+            "password": "",
+            "directory": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "payload",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 330,
+        "y": 300,
+        "wires": [
+            [
+                "277f61876bce3192",
+                "81e06cdaea1f238f"
+            ]
+        ]
+    },
+    {
+        "id": "277f61876bce3192",
+        "type": "debug",
+        "z": "ff1aaeb07a2d4250",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "81e06cdaea1f238f",
+        "type": "http request",
+        "z": "ff1aaeb07a2d4250",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://127.0.0.1:5000/configure-nextcloud",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "msg",
+                "keyValue": "",
+                "valueType": "other",
+                "valueValue": "payload"
+            }
+        ],
+        "x": 540,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "921d18b4552d16c0",
+        "type": "ui_group",
+        "name": "Chamber 1",
+        "tab": "91a363c042b4c70d",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "91a363c042b4c70d",
+        "type": "ui_tab",
+        "name": "Camera Stream",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

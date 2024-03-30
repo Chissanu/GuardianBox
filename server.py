@@ -1,4 +1,4 @@
-from flask import Flask, Response
+from flask import Flask, Response, request
 import cv2
 import time
 import numpy as np
@@ -9,10 +9,13 @@ import requests
 from datetime import datetime
 
 app = Flask(__name__)
-config = dotenv_values(".env")
+# config = dotenv_values(".env")
 
-nc = nextcloud_client.Client(config['NC_URL'])
-nc.login(config['NC_USER'], config['NC_PASS'])
+# nc = nextcloud_client.Client(config['NC_URL'])
+# nc.login(config['NC_USER'], config['NC_PASS'])
+nc = None
+root_nc_dir = "CCTV/"
+
 recording_cam_1 = False
 recording_cam_2 = False
 recording_cam_3 = False
@@ -50,7 +53,7 @@ def camera_1_feed():
             else:
                 video_index += 1
             
-            nc_dir = "CCTV/" + output_file
+            nc_dir = root_nc_dir + output_file
             nc.put_file(nc_dir, output_file)
             print("Video Wrote")
             out.release()
@@ -90,7 +93,7 @@ def camera_2_feed():
             else:
                 video_index += 1
             
-            nc_dir = "CCTV/" + output_file
+            nc_dir = root_nc_dir + output_file
             nc.put_file(nc_dir, output_file)
             print("Video Wrote")
             out.release()
@@ -130,7 +133,7 @@ def camera_3_feed():
             else:
                 video_index += 1
             
-            nc_dir = "CCTV/" + output_file
+            nc_dir = root_nc_dir + output_file
             nc.put_file(nc_dir, output_file)
             print("Video Wrote")
             out.release()
@@ -188,6 +191,20 @@ def stopRecordCam3():
     global recording_cam_3
     recording_cam_3 = False
     return "Recording Stopped"
+
+@app.route('/configure-nextcloud', methods=['POST'])
+def configureNextcloud():
+    global nc
+    data = request.json
+    try:
+        nc = nextcloud_client.Client(data['url'])
+        nc.login(data['username'], data['password'])
+        root_nc_dir = data['directory']
+        print("Nextcloud Configured")
+        return "Nextcloud Configured Successfully"
+    except:
+        print("Nextcloud Configuration Failed")
+        return "Nextcloud Configuration Failed, Check Credentials and URL"
 
 if __name__ == '__main__': 
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)

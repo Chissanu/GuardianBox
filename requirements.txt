@@ -3,3 +3,5 @@ pyncclient
 python-dotenv
 hcsr04sensor
 psycopg2-binary
+flask
+python-dotenv
