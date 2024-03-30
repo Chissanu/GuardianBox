@@ -1,0 +1,793 @@
+[
+    {
+        "id": "a5d218c9ef93ddce",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f0d305ed4b3e7a22",
+        "type": "mqtt out",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "topic": "GuardianBox/chamber-controller",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "fc4c221ebcf614c6",
+        "x": 710,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "53506070b3bf38b1",
+        "type": "ui_button",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "group": "9dd52c90b674a02e",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Open Chamber 1",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 270,
+        "y": 160,
+        "wires": [
+            [
+                "f0d305ed4b3e7a22",
+                "fd5a7f025d6f8efc",
+                "6acb7cdcc7a5e246",
+                "23be55e4b210e3bf",
+                "8511d391a7693b3b",
+                "04a13001cbbf3475"
+            ]
+        ]
+    },
+    {
+        "id": "fd5a7f025d6f8efc",
+        "type": "debug",
+        "z": "a5d218c9ef93ddce",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "672dbbbc2796fa62",
+        "type": "ui_button",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "group": "226a852afdfdbb59",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Open Chamber 2",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "2",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 270,
+        "y": 320,
+        "wires": [
+            [
+                "f0d305ed4b3e7a22",
+                "4af571ed9ca63432",
+                "8965c27a94bc7532",
+                "8511d391a7693b3b",
+                "04a13001cbbf3475"
+            ]
+        ]
+    },
+    {
+        "id": "92ad71565b3081a7",
+        "type": "ui_led",
+        "z": "a5d218c9ef93ddce",
+        "order": 1,
+        "group": "9dd52c90b674a02e",
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#008000",
+                "value": "Vacant",
+                "valueType": "str"
+            },
+            {
+                "color": "#ff0000",
+                "value": "Occupied",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 690,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "5826c156351f18e0",
+        "type": "mqtt in",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "topic": "GuardianBox/sonic-1-status",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "fc4c221ebcf614c6",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 360,
+        "y": 640,
+        "wires": [
+            [
+                "92ad71565b3081a7",
+                "6189dd78814938b8"
+            ]
+        ]
+    },
+    {
+        "id": "26e93e7e735d2787",
+        "type": "mqtt in",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "topic": "GuardianBox/sonic-2-status",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "fc4c221ebcf614c6",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 360,
+        "y": 820,
+        "wires": [
+            [
+                "824d5a513218f791",
+                "209f1c8432c00cbe"
+            ]
+        ]
+    },
+    {
+        "id": "824d5a513218f791",
+        "type": "ui_led",
+        "z": "a5d218c9ef93ddce",
+        "order": 1,
+        "group": "226a852afdfdbb59",
+        "width": 0,
+        "height": 0,
+        "label": "",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "Occupied",
+                "valueType": "str"
+            },
+            {
+                "color": "#008000",
+                "value": "Vacant",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 650,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "6189dd78814938b8",
+        "type": "ui_text",
+        "z": "a5d218c9ef93ddce",
+        "group": "9dd52c90b674a02e",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Values:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 700,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "209f1c8432c00cbe",
+        "type": "ui_text",
+        "z": "a5d218c9ef93ddce",
+        "group": "226a852afdfdbb59",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Values:",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 660,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "4af571ed9ca63432",
+        "type": "http request",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://10.100.14.197:5000/camera-2",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 590,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6acb7cdcc7a5e246",
+        "type": "http request",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://10.100.14.197:5000/camera-1",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 630,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "23be55e4b210e3bf",
+        "type": "delay",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 620,
+        "y": 180,
+        "wires": [
+            [
+                "f09d4d475076759c"
+            ]
+        ]
+    },
+    {
+        "id": "f09d4d475076759c",
+        "type": "http request",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://10.100.14.197:5000/camera-1/start-record",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 810,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a1d7548038a83fce",
+        "type": "delay",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "15",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1240,
+        "y": 60,
+        "wires": [
+            [
+                "36d32ad701521153",
+                "eb84b160d2f56e23"
+            ]
+        ]
+    },
+    {
+        "id": "36d32ad701521153",
+        "type": "http request",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://10.100.14.197:5000/camera-1/stop-record",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1410,
+        "y": 60,
+        "wires": [
+            [
+                "f10f8811e544f991"
+            ]
+        ]
+    },
+    {
+        "id": "50870c7349295f24",
+        "type": "ui_button",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "group": "9dd52c90b674a02e",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Confirm sending Chamber 1",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "3",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1060,
+        "y": 180,
+        "wires": [
+            [
+                "a1d7548038a83fce"
+            ]
+        ]
+    },
+    {
+        "id": "8965c27a94bc7532",
+        "type": "delay",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 580,
+        "y": 420,
+        "wires": [
+            [
+                "6ef6f695cb8bbdbb"
+            ]
+        ]
+    },
+    {
+        "id": "6ef6f695cb8bbdbb",
+        "type": "http request",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://10.100.14.197:5000/camera-2/start-record",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 770,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6358c89b350f9e41",
+        "type": "delay",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "15",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1280,
+        "y": 420,
+        "wires": [
+            [
+                "390acb82b5f849d6",
+                "eb84b160d2f56e23"
+            ]
+        ]
+    },
+    {
+        "id": "390acb82b5f849d6",
+        "type": "http request",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://10.100.14.197:5000/camera-2/stop-record",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1470,
+        "y": 420,
+        "wires": [
+            [
+                "5f0ab519d9231099"
+            ]
+        ]
+    },
+    {
+        "id": "f82a64ab0344c2d6",
+        "type": "ui_button",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "group": "226a852afdfdbb59",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Confirm sending Chamber 2",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "4",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1020,
+        "y": 420,
+        "wires": [
+            [
+                "6358c89b350f9e41"
+            ]
+        ]
+    },
+    {
+        "id": "f10f8811e544f991",
+        "type": "http request",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://10.100.14.197:5000/camera-1/stop",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1590,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5f0ab519d9231099",
+        "type": "http request",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://10.100.14.197:5000/camera-1/stop",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1650,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8511d391a7693b3b",
+        "type": "http request",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://10.100.14.197:5000/camera-3",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 910,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "04a13001cbbf3475",
+        "type": "delay",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "3",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1140,
+        "y": 260,
+        "wires": [
+            [
+                "3148bbc939ccc531"
+            ]
+        ]
+    },
+    {
+        "id": "3148bbc939ccc531",
+        "type": "http request",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://10.100.14.197:5000/camera-3/start-record",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1310,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eb84b160d2f56e23",
+        "type": "http request",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://10.100.14.197:5000/camera-3/stop-record",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1610,
+        "y": 260,
+        "wires": [
+            [
+                "1032c27f1c98f6b3"
+            ]
+        ]
+    },
+    {
+        "id": "1032c27f1c98f6b3",
+        "type": "http request",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://10.100.14.197:5000/camera-3/stop",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1830,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "42abbf1bee95e63e",
+        "type": "ui_spacer",
+        "z": "a5d218c9ef93ddce",
+        "name": "spacer",
+        "group": "1ca7c06b7c8ad96a",
+        "order": 2,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "6e329485d1a5fd84",
+        "type": "ui_spacer",
+        "z": "a5d218c9ef93ddce",
+        "name": "spacer",
+        "group": "1ca7c06b7c8ad96a",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "fc4c221ebcf614c6",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "9dd52c90b674a02e",
+        "type": "ui_group",
+        "name": "Chamber 1",
+        "tab": "cd07171ea26579af",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "226a852afdfdbb59",
+        "type": "ui_group",
+        "name": "Chamber 2",
+        "tab": "cd07171ea26579af",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "cd07171ea26579af",
+        "type": "ui_tab",
+        "name": "GuardianBox",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
