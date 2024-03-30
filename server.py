@@ -14,6 +14,7 @@ nc = nextcloud_client.Client(config['NC_URL'])
 nc.login(config['NC_USER'], config['NC_PASS'])
 recording_cam_1 = False
 recording_cam_2 = False
+recording_cam_3 = False
 
 # This function will always run and will stream the camera output alongside taking videos
 def camera_1_feed():
@@ -94,6 +95,45 @@ def camera_2_feed():
     vs.release()
     cv2.destroyAllWindows()
 
+def camera_3_feed():
+    global recording_cam_3
+    video_index = 0
+    """Video streaming generator function."""
+    vs = cv2.VideoCapture(4)
+    vs.set(cv2.CAP_PROP_FPS, 10)
+    video_frames = []
+    while True:
+        ret, frame = vs.read()
+        if recording_cam_3 == True:
+            video_frames.append(frame)
+        if not ret:
+            break
+        ret, jpeg = cv2.imencode('.jpg', frame)
+        frame = jpeg.tobytes()
+        print("Camera 3 Recording: ", recording_cam_2)
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+        
+        if recording_cam_3 == False and len(video_frames) > 0:
+            output_file = f'cam_3_clip_{video_index}.avi'
+            fourcc = cv2.VideoWriter_fourcc(*'XVID')
+            out = cv2.VideoWriter(output_file, fourcc, 20.0, (640, 480))
+            for frame in np.array(video_frames):
+                out.write(frame)
+            video_frames = []
+            if video_index >= 5:
+                video_index = 0
+            else:
+                video_index += 1
+            
+            nc_dir = "CCTV/" + output_file
+            nc.put_file(nc_dir, output_file)
+            print("Video Wrote")
+            out.release()
+
+    vs.release()
+    cv2.destroyAllWindows()
+
 @app.route('/camera-1')
 def cam1():
     """Video streaming route for camera 1."""
@@ -126,6 +166,23 @@ def recordCam2():
 def stopRecordCam2():
     global recording_cam_2
     recording_cam_2 = False
+    return "Recording Stopped"
+
+@app.route('/camera-3')
+def cam3():
+    """Video streaming route for camera 3."""
+    return Response(camera_3_feed(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/camera-3/start-record')
+def recordCam3():
+    global recording_cam_3
+    recording_cam_3 = True
+    return "Recording Started"
+
+@app.route('/camera-3/stop-record')
+def stopRecordCam3():
+    global recording_cam_3
+    recording_cam_3 = False
     return "Recording Stopped"
 
 if __name__ == '__main__': 
