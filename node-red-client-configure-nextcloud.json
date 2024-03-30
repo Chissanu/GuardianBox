@@ -5,8 +5,8 @@
         "z": "ff1aaeb07a2d4250",
         "name": "",
         "label": "",
-        "group": "921d18b4552d16c0",
-        "order": 0,
+        "group": "dc3c79b5309f5a84",
+        "order": 1,
         "width": 0,
         "height": 0,
         "options": [
@@ -101,29 +101,52 @@
                 "valueValue": "payload"
             }
         ],
-        "x": 540,
+        "x": 530,
         "y": 300,
         "wires": [
-            []
+            [
+                "210d696ebcca5b64"
+            ]
         ]
     },
     {
-        "id": "921d18b4552d16c0",
+        "id": "210d696ebcca5b64",
+        "type": "ui_text",
+        "z": "ff1aaeb07a2d4250",
+        "group": "dc3c79b5309f5a84",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Configuration Status",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 780,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "dc3c79b5309f5a84",
         "type": "ui_group",
-        "name": "Chamber 1",
-        "tab": "91a363c042b4c70d",
+        "name": "Input the configuration below",
+        "tab": "cd11c34812c072f9",
         "order": 1,
         "disp": true,
-        "width": "12",
+        "width": "6",
         "collapse": false,
         "className": ""
     },
     {
-        "id": "91a363c042b4c70d",
+        "id": "cd11c34812c072f9",
         "type": "ui_tab",
-        "name": "Camera Stream",
+        "name": "Nextcloud Configuration",
         "icon": "dashboard",
-        "order": 1,
+        "order": 4,
         "disabled": false,
         "hidden": false
     }
