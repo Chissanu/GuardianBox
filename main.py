@@ -194,17 +194,19 @@ controller2 = Contoller(light_led_2,ultra_pin_2,echo_pin_2,mag_pin_2)
 def on_message(client, usrdata, message):
     print("Receive : " + str(message.payload.decode()) + "\n")
     if(message.payload.decode() == "1"):
-        controller1.mag_unlock()
-        time.sleep(3)
-        controller1.mag_lock()
-        print("1 come")
+        if chamber1_state == "Vacant":
+            controller1.mag_unlock()
+            time.sleep(3)
+            controller1.mag_lock()
+            print("1 come")
         
         # check_if_item_inside(controller1)
     elif(message.payload.decode() == "2"):
-        controller1.mag_unlock()
-        time.sleep(3)
-        controller1.mag_lock()
-        print("2 come")
+        if chamber2_state == "Vacant":
+            controller1.mag_unlock()
+            time.sleep(3)
+            controller1.mag_lock()
+            print("2 come")
         # check_if_item_inside(controller2)
     else:
         print("0 come")
