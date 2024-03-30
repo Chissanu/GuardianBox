@@ -6,6 +6,7 @@ import os
 import nextcloud_client
 from dotenv import dotenv_values
 import requests
+from datetime import datetime
 
 app = Flask(__name__)
 config = dotenv_values(".env")
@@ -25,6 +26,7 @@ def camera_1_feed():
     vs.set(cv2.CAP_PROP_FPS, 10)
     video_frames = []
     while True:
+        currTime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         ret, frame = vs.read()
         if recording_cam_1 == True:
             video_frames.append(frame)
@@ -32,14 +34,14 @@ def camera_1_feed():
             break
         ret, jpeg = cv2.imencode('.jpg', frame)
         frame = jpeg.tobytes()
-        print("Camera 1 Recording: ", recording_cam_1)
+        print(currTime + " Camera 1 Recording: ", recording_cam_1)
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
         
         if recording_cam_1 == False and len(video_frames) > 0:
             output_file = f'cam_0_clip_{video_index}.avi'
             fourcc = cv2.VideoWriter_fourcc(*'XVID')
-            out = cv2.VideoWriter(output_file, fourcc, 20.0, (640, 480))
+            out = cv2.VideoWriter(output_file, fourcc, 10.0, (640, 480))
             for frame in np.array(video_frames):
                 out.write(frame)
             video_frames = []
@@ -64,6 +66,7 @@ def camera_2_feed():
     vs.set(cv2.CAP_PROP_FPS, 10)
     video_frames = []
     while True:
+        currTime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         ret, frame = vs.read()
         if recording_cam_2 == True:
             video_frames.append(frame)
@@ -71,14 +74,14 @@ def camera_2_feed():
             break
         ret, jpeg = cv2.imencode('.jpg', frame)
         frame = jpeg.tobytes()
-        print("Camera 2 Recording: ", recording_cam_2)
+        print(currTime + " Camera 2 Recording: ", recording_cam_2)
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
         
         if recording_cam_2 == False and len(video_frames) > 0:
             output_file = f'cam_2_clip_{video_index}.avi'
             fourcc = cv2.VideoWriter_fourcc(*'XVID')
-            out = cv2.VideoWriter(output_file, fourcc, 20.0, (640, 480))
+            out = cv2.VideoWriter(output_file, fourcc, 10.0, (640, 480))
             for frame in np.array(video_frames):
                 out.write(frame)
             video_frames = []
@@ -103,6 +106,7 @@ def camera_3_feed():
     vs.set(cv2.CAP_PROP_FPS, 10)
     video_frames = []
     while True:
+        currTime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         ret, frame = vs.read()
         if recording_cam_3 == True:
             video_frames.append(frame)
@@ -110,14 +114,14 @@ def camera_3_feed():
             break
         ret, jpeg = cv2.imencode('.jpg', frame)
         frame = jpeg.tobytes()
-        print("Camera 3 Recording: ", recording_cam_2)
+        print(currTime + " Camera 3 Recording: ", recording_cam_2)
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
         
         if recording_cam_3 == False and len(video_frames) > 0:
             output_file = f'cam_3_clip_{video_index}.avi'
             fourcc = cv2.VideoWriter_fourcc(*'XVID')
-            out = cv2.VideoWriter(output_file, fourcc, 20.0, (640, 480))
+            out = cv2.VideoWriter(output_file, fourcc, 10.0, (640, 480))
             for frame in np.array(video_frames):
                 out.write(frame)
             video_frames = []
