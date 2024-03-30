@@ -1,0 +1,1196 @@
+[
+    {
+        "id": "fa0b0d26e3275166",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "918b0d6268a55a18",
+        "type": "ui_template",
+        "z": "fa0b0d26e3275166",
+        "group": "921d18b4552d16c0",
+        "name": "Camera 1",
+        "order": 1,
+        "width": 12,
+        "height": 9,
+        "format": "<img alt=\"stream test\" src=\"data:image/jpg;base64,{{msg.payload}}\" />\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 863.2569236755371,
+        "y": 400.4166660308838,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "21802780f8a6db33",
+        "type": "change",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pause",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 360,
+        "wires": [
+            [
+                "230e73ca421d2e6c"
+            ]
+        ]
+    },
+    {
+        "id": "ec96971f41864487",
+        "type": "change",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "resume",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 400,
+        "wires": [
+            [
+                "230e73ca421d2e6c"
+            ]
+        ]
+    },
+    {
+        "id": "32ba6f44908cbb4a",
+        "type": "change",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "stop",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 440,
+        "wires": [
+            [
+                "230e73ca421d2e6c"
+            ]
+        ]
+    },
+    {
+        "id": "5b0a836026228b65",
+        "type": "ui_template",
+        "z": "fa0b0d26e3275166",
+        "group": "e0583dd591296435",
+        "name": "Camera 2",
+        "order": 1,
+        "width": 12,
+        "height": 9,
+        "format": "<img alt=\"stream test\" src=\"data:image/jpg;base64,{{msg.payload}}\" />\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 863.2569236755371,
+        "y": 600.4166660308838,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d0192a479c3fd510",
+        "type": "change",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "pause",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 560,
+        "wires": [
+            [
+                "0da4ec2ec7b53637"
+            ]
+        ]
+    },
+    {
+        "id": "5aaea8b4bd6d98cc",
+        "type": "change",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "resume",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 600,
+        "wires": [
+            [
+                "0da4ec2ec7b53637"
+            ]
+        ]
+    },
+    {
+        "id": "4ed59d250861e539",
+        "type": "change",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "stop",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 640,
+        "wires": [
+            [
+                "0da4ec2ec7b53637"
+            ]
+        ]
+    },
+    {
+        "id": "2782fb63d3a09cf1",
+        "type": "ui_button",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "group": "921d18b4552d16c0",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Start Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "payload",
+        "topicType": "msg",
+        "x": 90,
+        "y": 320,
+        "wires": [
+            [
+                "8fa6334421b38aeb"
+            ]
+        ]
+    },
+    {
+        "id": "cc0a62ee63f5cc4d",
+        "type": "ui_button",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "group": "e0583dd591296435",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Start Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "date",
+        "topic": "payload",
+        "topicType": "msg",
+        "x": 90,
+        "y": 520,
+        "wires": [
+            [
+                "a3183e19134032e9"
+            ]
+        ]
+    },
+    {
+        "id": "3af969b9faf3377e",
+        "type": "ui_button",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "group": "921d18b4552d16c0",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Pause Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 100,
+        "y": 360,
+        "wires": [
+            [
+                "21802780f8a6db33"
+            ]
+        ]
+    },
+    {
+        "id": "47540275234303ac",
+        "type": "ui_button",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "group": "921d18b4552d16c0",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Resume Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 100,
+        "y": 400,
+        "wires": [
+            [
+                "ec96971f41864487"
+            ]
+        ]
+    },
+    {
+        "id": "7e183eb73a2422bf",
+        "type": "ui_button",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "group": "921d18b4552d16c0",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Stop Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 90,
+        "y": 440,
+        "wires": [
+            [
+                "32ba6f44908cbb4a"
+            ]
+        ]
+    },
+    {
+        "id": "a6629510a352f032",
+        "type": "ui_button",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "group": "e0583dd591296435",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Stop Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 90,
+        "y": 640,
+        "wires": [
+            [
+                "4ed59d250861e539"
+            ]
+        ]
+    },
+    {
+        "id": "13643d8afb43b38d",
+        "type": "ui_button",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "group": "e0583dd591296435",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Resume Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 100,
+        "y": 600,
+        "wires": [
+            [
+                "5aaea8b4bd6d98cc"
+            ]
+        ]
+    },
+    {
+        "id": "a497c9469705d4cb",
+        "type": "ui_button",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "group": "e0583dd591296435",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Pause Stream",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 100,
+        "y": 560,
+        "wires": [
+            [
+                "d0192a479c3fd510"
+            ]
+        ]
+    },
+    {
+        "id": "230e73ca421d2e6c",
+        "type": "multipart-decoder",
+        "z": "fa0b0d26e3275166",
+        "name": "Chamber 1",
+        "ret": "bin",
+        "url": "",
+        "tls": "",
+        "authentication": "none",
+        "delay": "5",
+        "maximum": "10000000",
+        "blockSize": "1",
+        "enableLog": "off",
+        "x": 520,
+        "y": 400,
+        "wires": [
+            [
+                "69c55fb173abdb12"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "0da4ec2ec7b53637",
+        "type": "multipart-decoder",
+        "z": "fa0b0d26e3275166",
+        "name": "Chamber 2",
+        "ret": "bin",
+        "url": "",
+        "tls": "",
+        "authentication": "none",
+        "delay": "5",
+        "maximum": "10000000",
+        "blockSize": "1",
+        "enableLog": "on",
+        "x": 520,
+        "y": 600,
+        "wires": [
+            [
+                "3940b7af9401ee8e"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "3fd82562982e2bb0",
+        "type": "ui_text",
+        "z": "fa0b0d26e3275166",
+        "group": "7e492a35be12167f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Parcel Status",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 550,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "6b0f17efcc95e37c",
+        "type": "mqtt in",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "topic": "GuardianBox/sonic-1-status",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "238b3ea36002b528",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 820,
+        "wires": [
+            [
+                "397b164d4dabe776",
+                "3fd82562982e2bb0"
+            ]
+        ]
+    },
+    {
+        "id": "397b164d4dabe776",
+        "type": "debug",
+        "z": "fa0b0d26e3275166",
+        "name": "debug ",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 330,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "e8dbfc7a4c1daa33",
+        "type": "mqtt in",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "topic": "GuardianBox/magnet-1-status",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "238b3ea36002b528",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 920,
+        "wires": [
+            [
+                "67e016769d56121a"
+            ]
+        ]
+    },
+    {
+        "id": "67e016769d56121a",
+        "type": "ui_text",
+        "z": "fa0b0d26e3275166",
+        "group": "7e492a35be12167f",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Lock Status",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 550,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "aed4478a3f50cc0d",
+        "type": "ui_text",
+        "z": "fa0b0d26e3275166",
+        "group": "70556f32ba87b37d",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Parcel Status",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 550,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "27d61d1caa4c8f24",
+        "type": "mqtt in",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "topic": "GuardianBox/sonic-2-status",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "238b3ea36002b528",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 1040,
+        "wires": [
+            [
+                "7098847baab537f2",
+                "aed4478a3f50cc0d"
+            ]
+        ]
+    },
+    {
+        "id": "7098847baab537f2",
+        "type": "debug",
+        "z": "fa0b0d26e3275166",
+        "name": "debug ",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 280,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "77264247c3d6f867",
+        "type": "mqtt in",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "topic": "GuardianBox/magnet-2-status",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "238b3ea36002b528",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 1140,
+        "wires": [
+            [
+                "2f7df388e14e1920"
+            ]
+        ]
+    },
+    {
+        "id": "2f7df388e14e1920",
+        "type": "ui_text",
+        "z": "fa0b0d26e3275166",
+        "group": "70556f32ba87b37d",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Lock Status",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 550,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "8008e83e2da71e62",
+        "type": "ui_button",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "group": "7e492a35be12167f",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Unlock Chamber",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 770,
+        "y": 820,
+        "wires": [
+            [
+                "9a1a1164fe44b091"
+            ]
+        ]
+    },
+    {
+        "id": "e72d699f548db351",
+        "type": "ui_button",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "group": "70556f32ba87b37d",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Unlock Chamber",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 770,
+        "y": 1040,
+        "wires": [
+            [
+                "9eb07917156fc533"
+            ]
+        ]
+    },
+    {
+        "id": "9a1a1164fe44b091",
+        "type": "mqtt out",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "topic": "GuardianBox/magnet-1-unlock",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "5a4273a1ca9bf9bc",
+        "x": 1010,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "9eb07917156fc533",
+        "type": "mqtt out",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "topic": "GuardianBox/magnet-2-unlock",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "5a4273a1ca9bf9bc",
+        "x": 1010,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "9dce254e5312c3f1",
+        "type": "mqtt in",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "topic": "GuardianBox/logs-database",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "5a4273a1ca9bf9bc",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 420,
+        "y": 1400,
+        "wires": [
+            [
+                "e2470d8ed41605b9"
+            ]
+        ]
+    },
+    {
+        "id": "e2470d8ed41605b9",
+        "type": "split",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "splt": "$keys(msg.payload)",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "topic",
+        "x": 630,
+        "y": 1400,
+        "wires": [
+            [
+                "9f53160b66dfd0a5"
+            ]
+        ]
+    },
+    {
+        "id": "9f53160b66dfd0a5",
+        "type": "function",
+        "z": "fa0b0d26e3275166",
+        "name": "function 1",
+        "func": "// Initialize an array to store combined JSON objects\nif (!flow.get('combinedArray')) {\n    flow.set('combinedArray', []);\n}\n\n// Add the incoming message payload (JSON object) to the array\nvar combinedArray = flow.get('combinedArray');\ncombinedArray.push(msg.payload);\nflow.set('combinedArray', combinedArray);\n\n// Send the combined array as the output\nreturn { payload: combinedArray };",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 1500,
+        "wires": [
+            [
+                "8c6b544acf2422dd",
+                "b25316e6d023eabd"
+            ]
+        ]
+    },
+    {
+        "id": "b25316e6d023eabd",
+        "type": "debug",
+        "z": "fa0b0d26e3275166",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "69c55fb173abdb12",
+        "type": "base64",
+        "z": "fa0b0d26e3275166",
+        "name": "Encode",
+        "action": "",
+        "property": "payload",
+        "x": 720,
+        "y": 400,
+        "wires": [
+            [
+                "918b0d6268a55a18"
+            ]
+        ]
+    },
+    {
+        "id": "3940b7af9401ee8e",
+        "type": "base64",
+        "z": "fa0b0d26e3275166",
+        "name": "Encode",
+        "action": "",
+        "property": "payload",
+        "x": 720,
+        "y": 600,
+        "wires": [
+            [
+                "5b0a836026228b65"
+            ]
+        ]
+    },
+    {
+        "id": "c52f1bad617ac032",
+        "type": "ui_form",
+        "z": "fa0b0d26e3275166",
+        "name": "",
+        "label": "Enter IP Address",
+        "group": "e65e5042.3440c",
+        "order": 1,
+        "width": "6",
+        "height": "4",
+        "options": [
+            {
+                "label": "IP Address",
+                "value": "ip_address",
+                "type": "text",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "ip_address": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "form",
+        "x": 110,
+        "y": 180,
+        "wires": [
+            [
+                "80d1ac419124f4aa"
+            ]
+        ]
+    },
+    {
+        "id": "80d1ac419124f4aa",
+        "type": "function",
+        "z": "fa0b0d26e3275166",
+        "name": "Store IP Address",
+        "func": "global.set('ip_address', msg.payload.ip_address);\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8fa6334421b38aeb",
+        "type": "function",
+        "z": "fa0b0d26e3275166",
+        "name": "Use IP Address",
+        "func": "var ipAddress = global.get('ip_address');\nvar url = 'http://' + ipAddress + ':5000/camera-1';\nmsg.url = url;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 320,
+        "wires": [
+            [
+                "230e73ca421d2e6c"
+            ]
+        ]
+    },
+    {
+        "id": "a3183e19134032e9",
+        "type": "function",
+        "z": "fa0b0d26e3275166",
+        "name": "Use IP Address",
+        "func": "var ipAddress = global.get('ip_address');\nvar url = 'http://' + ipAddress + ':5000/camera-2';\nmsg.url = url;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 520,
+        "wires": [
+            [
+                "0da4ec2ec7b53637"
+            ]
+        ]
+    },
+    {
+        "id": "8c6b544acf2422dd",
+        "type": "ui_table",
+        "z": "fa0b0d26e3275166",
+        "group": "fb7d899f6ca0d30a",
+        "name": "Database",
+        "order": 2,
+        "width": "0",
+        "height": "0",
+        "columns": [
+            {
+                "field": "id",
+                "title": "ID",
+                "width": "",
+                "align": "center",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "chamber_id",
+                "title": "Chamber ID",
+                "width": "",
+                "align": "center",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "time_open",
+                "title": "Time Open",
+                "width": "",
+                "align": "center",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "time_close",
+                "title": "Time Close",
+                "width": "",
+                "align": "center",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 1000,
+        "y": 1480,
+        "wires": []
+    },
+    {
+        "id": "921d18b4552d16c0",
+        "type": "ui_group",
+        "name": "Chamber 1",
+        "tab": "91a363c042b4c70d",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e0583dd591296435",
+        "type": "ui_group",
+        "name": "Chamber 2",
+        "tab": "91a363c042b4c70d",
+        "order": 3,
+        "disp": true,
+        "width": 12,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7e492a35be12167f",
+        "type": "ui_group",
+        "name": "Chamber 1",
+        "tab": "b54b8e5d4924aebe",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "238b3ea36002b528",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "70556f32ba87b37d",
+        "type": "ui_group",
+        "name": "Chamber 2",
+        "tab": "b54b8e5d4924aebe",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5a4273a1ca9bf9bc",
+        "type": "mqtt-broker",
+        "name": "HIVEMQ",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e65e5042.3440c",
+        "type": "ui_group",
+        "name": "Settings",
+        "tab": "ec150a6b.1d204",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "fb7d899f6ca0d30a",
+        "type": "ui_group",
+        "name": "Chamber Status Log",
+        "tab": "424dc4576f3b1fcc",
+        "order": 1,
+        "disp": false,
+        "width": "18",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "91a363c042b4c70d",
+        "type": "ui_tab",
+        "name": "Camera Stream",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "b54b8e5d4924aebe",
+        "type": "ui_tab",
+        "name": "Chamber Control",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ec150a6b.1d204",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "424dc4576f3b1fcc",
+        "type": "ui_tab",
+        "name": "Chamber Status Log",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

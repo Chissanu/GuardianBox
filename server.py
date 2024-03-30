@@ -205,6 +205,10 @@ def configureNextcloud():
     except:
         print("Nextcloud Configuration Failed")
         return "Nextcloud Configuration Failed, Check Credentials and URL"
+    
+@app.route('/test-request')
+def testRequest():
+    return "Request Successful"
 
 if __name__ == '__main__': 
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
