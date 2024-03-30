@@ -1093,7 +1093,7 @@
         "wires": [
             [
                 "277f61876bce3192",
-                "81e06cdaea1f238f"
+                "e932e157cd25b79d"
             ]
         ]
     },
@@ -1115,37 +1115,6 @@
         "wires": []
     },
     {
-        "id": "81e06cdaea1f238f",
-        "type": "http request",
-        "z": "fa0b0d26e3275166",
-        "name": "",
-        "method": "POST",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "http://127.0.0.1:5000/configure-nextcloud",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [
-            {
-                "keyType": "msg",
-                "keyValue": "",
-                "valueType": "other",
-                "valueValue": "payload"
-            }
-        ],
-        "x": 290,
-        "y": 1560,
-        "wires": [
-            [
-                "210d696ebcca5b64"
-            ]
-        ]
-    },
-    {
         "id": "210d696ebcca5b64",
         "type": "ui_text",
         "z": "fa0b0d26e3275166",
@@ -1165,6 +1134,26 @@
         "x": 540,
         "y": 1560,
         "wires": []
+    },
+    {
+        "id": "e932e157cd25b79d",
+        "type": "function",
+        "z": "fa0b0d26e3275166",
+        "name": "Use IP Address",
+        "func": "var ipAddress = global.get('ip_address');\nvar url = 'http://' + ipAddress + ':5000/configure-nextcloud';\nmsg.url = url;\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 1640,
+        "wires": [
+            [
+                "210d696ebcca5b64"
+            ]
+        ]
     },
     {
         "id": "921d18b4552d16c0",
