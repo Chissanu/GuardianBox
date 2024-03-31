@@ -21,7 +21,7 @@
         "correl": "",
         "expiry": "",
         "broker": "fc4c221ebcf614c6",
-        "x": 710,
+        "x": 550,
         "y": 260,
         "wires": []
     },
@@ -41,20 +41,21 @@
         "bgcolor": "",
         "className": "",
         "icon": "",
-        "payload": "1",
-        "payloadType": "str",
+        "payload": "{\"key\":1}",
+        "payloadType": "json",
         "topic": "topic",
         "topicType": "msg",
-        "x": 270,
-        "y": 160,
+        "x": 230,
+        "y": 120,
         "wires": [
             [
-                "f0d305ed4b3e7a22",
                 "fd5a7f025d6f8efc",
                 "6acb7cdcc7a5e246",
                 "23be55e4b210e3bf",
                 "8511d391a7693b3b",
-                "04a13001cbbf3475"
+                "04a13001cbbf3475",
+                "f0d305ed4b3e7a22",
+                "dc95489702054248"
             ]
         ]
     },
@@ -91,19 +92,20 @@
         "bgcolor": "",
         "className": "",
         "icon": "",
-        "payload": "2",
-        "payloadType": "str",
+        "payload": "{\"key\":2}",
+        "payloadType": "json",
         "topic": "topic",
         "topicType": "msg",
-        "x": 270,
-        "y": 320,
+        "x": 250,
+        "y": 420,
         "wires": [
             [
                 "f0d305ed4b3e7a22",
                 "4af571ed9ca63432",
                 "8965c27a94bc7532",
                 "8511d391a7693b3b",
-                "04a13001cbbf3475"
+                "04a13001cbbf3475",
+                "84c50489b54b481a"
             ]
         ]
     },
@@ -392,7 +394,7 @@
         "y": 60,
         "wires": [
             [
-                "f10f8811e544f991"
+                "cafb8dd80bc5cf7e"
             ]
         ]
     },
@@ -420,7 +422,8 @@
         "y": 180,
         "wires": [
             [
-                "a1d7548038a83fce"
+                "a1d7548038a83fce",
+                "15ef7551c48e8d54"
             ]
         ]
     },
@@ -517,7 +520,7 @@
         "y": 420,
         "wires": [
             [
-                "5f0ab519d9231099"
+                "c439189de07efcbe"
             ]
         ]
     },
@@ -545,52 +548,9 @@
         "y": 420,
         "wires": [
             [
-                "6358c89b350f9e41"
+                "6358c89b350f9e41",
+                "e2c9011a46527c4d"
             ]
-        ]
-    },
-    {
-        "id": "f10f8811e544f991",
-        "type": "http request",
-        "z": "a5d218c9ef93ddce",
-        "name": "",
-        "method": "GET",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "http://10.100.14.197:5000/camera-1/stop",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 1590,
-        "y": 60,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "5f0ab519d9231099",
-        "type": "http request",
-        "z": "a5d218c9ef93ddce",
-        "name": "",
-        "method": "GET",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "http://10.100.14.197:5000/camera-1/stop",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 1650,
-        "y": 420,
-        "wires": [
-            []
         ]
     },
     {
@@ -632,7 +592,7 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 1140,
+        "x": 840,
         "y": 260,
         "wires": [
             [
@@ -682,12 +642,34 @@
         "y": 260,
         "wires": [
             [
-                "1032c27f1c98f6b3"
+                "72880719ce31305e"
             ]
         ]
     },
     {
-        "id": "1032c27f1c98f6b3",
+        "id": "cafb8dd80bc5cf7e",
+        "type": "http request",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://10.100.14.197:5000/camera-1/stop",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1630,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "72880719ce31305e",
         "type": "http request",
         "z": "a5d218c9ef93ddce",
         "name": "",
@@ -702,10 +684,148 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 1830,
+        "x": 1790,
         "y": 260,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "c439189de07efcbe",
+        "type": "http request",
+        "z": "a5d218c9ef93ddce",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://10.100.14.197:5000/camera-2/stop",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1670,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dc95489702054248",
+        "type": "function",
+        "z": "a5d218c9ef93ddce",
+        "name": "Store open time 1",
+        "func": "var timeopen1 = Date.now();\n\n// Set the timestamp in the global context\nglobal.set('timeopen1', timeopen1);\n\n// Return the message object (optional)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "84c50489b54b481a",
+        "type": "function",
+        "z": "a5d218c9ef93ddce",
+        "name": "Store open time 2",
+        "func": "var timeopen2 = Date.now();\n\n// Set the timestamp in the global context\nglobal.set('timeopen2', timeopen2);\n\n// Return the message object (optional)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "15ef7551c48e8d54",
+        "type": "function",
+        "z": "a5d218c9ef93ddce",
+        "name": "Store close time 1",
+        "func": "var timeclose1 = Date.now();\n\n// Set the timestamp in the global context\nglobal.set('timeclose1', timeclose1);\n\n// Return the message object (optional)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1310,
+        "y": 160,
+        "wires": [
+            [
+                "69d46406d837c84a"
+            ]
+        ]
+    },
+    {
+        "id": "e2c9011a46527c4d",
+        "type": "function",
+        "z": "a5d218c9ef93ddce",
+        "name": "Store open time 1",
+        "func": "var timeclose2 = Date.now();\n\n// Set the timestamp in the global context\nglobal.set('timeclose2', timeclose2);\n\n// Return the message object (optional)\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 1,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1310,
+        "y": 320,
+        "wires": [
+            [
+                "afc47d9941885ec5"
+            ]
+        ]
+    },
+    {
+        "id": "69d46406d837c84a",
+        "type": "function",
+        "z": "a5d218c9ef93ddce",
+        "name": "Send time chamber1",
+        "func": "var timeopen1 = global.get('timeopen1');\nvar timeclose1 = global.get('timeclose1');\nmsg.payload = {\n    key : 3,\n    chamber : 1,\n    timeopen: global.get('timeopen1'),\n    timeclose: global.get('timeclose1')\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1600,
+        "y": 140,
+        "wires": [
+            [
+                "f0d305ed4b3e7a22"
+            ]
+        ]
+    },
+    {
+        "id": "afc47d9941885ec5",
+        "type": "function",
+        "z": "a5d218c9ef93ddce",
+        "name": "Send time chamber2",
+        "func": "var timeopen2 = global.get('timeopen2');\nvar timeclose2 = global.get('timeopen2');\nmsg.payload = {\n    key : 3,\n    chamber : 2,\n    timeopen: global.get('timeopen2'),\n    timeclose: global.get('timeclose2')\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1600,
+        "y": 320,
+        "wires": [
+            [
+                "f0d305ed4b3e7a22"
+            ]
         ]
     },
     {

@@ -8,8 +8,6 @@ class Contoller():
         self.ultra_pin = ultra_pin
         self.echo_pin = echo_pin
 
-        print(self.led_pin)
-
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.ultra_pin, GPIO.OUT)  
@@ -18,8 +16,7 @@ class Contoller():
         GPIO.setup(21, GPIO.OUT)
 
     def turn_on(self):
-        print("Turning ON!")
-        print(self.led_pin)
+
         GPIO.output(self.led_pin, True)
 
     def turn_off(self):

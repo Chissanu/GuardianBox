@@ -79,22 +79,14 @@ def insert_to_database(command,operation):
             cur.close()
             conn.close()
 
-def openCrate():
-    timestamp_val = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-    # Open crate sum
-    crateOpen = "t"
-    chamber_id = str(input("Which chamber"))
-    while crateOpen == "t":
-        crateOpen = input("Still open? t/f >")
-    timeclose_val = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
+def openCrate(chamber_id,timestamp_val,timeclose_val):
     command = f"INSERT INTO logs (chamber_id,time_open, time_close) values ('{chamber_id}', '{timestamp_val}','{timeclose_val}')"
     insert_to_database(command,"INSERT")
+    get_logs()
 
 def check_chamber1():
     global chamber1_state
-
+    
     previous_message = None
     while True:
         distance = controller1.read_ultrasonic()
@@ -117,6 +109,7 @@ def check_chamber2():
     global chamber2_state
 
     previous_message = None
+    
     while True:
         distance = controller2.read_ultrasonic()
         if distance <= 26:
@@ -165,9 +158,9 @@ echo_pin_2 = 20
 
 def on_message(client, usrdata, message):
     print("Receive : " + str(message.payload.decode()) + "\n")
-    if (message.payload.decode() == "0"):
-        pass
-    elif(message.payload.decode() == "1"):
+    val = json.loads(message.payload.decode())
+    
+    if val["key"] == 1:
         if chamber1_state == "Vacant":
             controller1.mag_unlock()
             time.sleep(3)
@@ -175,15 +168,25 @@ def on_message(client, usrdata, message):
             print("1 come")
             controller1.turn_on()
         
-    elif(message.payload.decode() == "2"):
+    elif val["key"] == 2:
         if chamber2_state == "Vacant":
             controller1.mag_unlock()
             time.sleep(3)
             controller1.mag_lock()
             print("2 come")
             controller2.turn_on()
+
     else:
-        print("0 come")
+        timeOpen = val["timeopen"]
+        timeClose = val["timeclose"]
+        dt_o = datetime.fromtimestamp(timeOpen / 1000)
+        dt_c = datetime.fromtimestamp(timeClose / 1000)
+
+        readable_timestamp = dt_o.strftime('%Y-%m-%d %H:%M:%S')
+        readable_timeclose = dt_c.strftime('%Y-%m-%d %H:%M:%S')
+
+        openCrate(val["chamber"],readable_timestamp,readable_timeclose)
+        print("Inserted to database")
 
 
 def on_connect(client, usrdata, flags, rc):
@@ -208,6 +211,10 @@ client.loop_start()
 controller1.mag_lock()
 chamber1 = threading.Thread(target=check_chamber1).start()
 chamber2 = threading.Thread(target=check_chamber2).start()
+
+timestamp_val = 0
+timeclose_val = 0
+chamber = 0
 
 try:
     while True:
