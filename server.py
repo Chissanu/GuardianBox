@@ -20,13 +20,20 @@ recording_cam_1 = False
 recording_cam_2 = False
 recording_cam_3 = False
 
+stop_cam_1 = False
+stop_cam_2 = False
+stop_cam_3 = False
+
 # This function will always run and will stream the camera output alongside taking videos
 def camera_1_feed():
     global recording_cam_1
+    global stop_cam_1
     video_index = 0
     """Video streaming generator function."""
     vs = cv2.VideoCapture(0)
     vs.set(cv2.CAP_PROP_FPS, 10)
+    vs.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+    vs.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
     video_frames = []
     while True:
         currTime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -58,15 +65,20 @@ def camera_1_feed():
             print("Video Wrote")
             out.release()
 
+        if stop_cam_1 == True:
+            break
     vs.release()
     cv2.destroyAllWindows()
 
 def camera_2_feed():
     global recording_cam_2
+    global stop_cam_2
     video_index = 0
     """Video streaming generator function."""
     vs = cv2.VideoCapture(2)
     vs.set(cv2.CAP_PROP_FPS, 10)
+    vs.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+    vs.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
     video_frames = []
     while True:
         currTime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -98,15 +110,21 @@ def camera_2_feed():
             print("Video Wrote")
             out.release()
 
+        if stop_cam_2 == True:
+            break
+
     vs.release()
     cv2.destroyAllWindows()
 
 def camera_3_feed():
     global recording_cam_3
+    global stop_cam_3
     video_index = 0
     """Video streaming generator function."""
     vs = cv2.VideoCapture(4)
     vs.set(cv2.CAP_PROP_FPS, 10)
+    vs.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+    vs.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
     video_frames = []
     while True:
         currTime = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -138,6 +156,9 @@ def camera_3_feed():
             print("Video Wrote")
             out.release()
 
+        if stop_cam_3 == True:
+            break
+
     vs.release()
     cv2.destroyAllWindows()
 
@@ -145,6 +166,12 @@ def camera_3_feed():
 def cam1():
     """Video streaming route for camera 1."""
     return Response(camera_1_feed(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/camera-1/stop')
+def stopCam1():
+    global stop_cam_1
+    stop_cam_1 = True
+    return "Camera 1 Stopped"
 
 @app.route('/camera-1/start-record')
 def recordCam1():
@@ -163,6 +190,12 @@ def cam2():
     """Video streaming route for camera 2."""
     return Response(camera_2_feed(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
+@app.route('/camera-2/stop')
+def stopCam2():
+    global stop_cam_2
+    stop_cam_2 = True
+    return "Camera 2 Stopped"
+
 @app.route('/camera-2/start-record')
 def recordCam2():
     global recording_cam_2
@@ -179,6 +212,12 @@ def stopRecordCam2():
 def cam3():
     """Video streaming route for camera 3."""
     return Response(camera_3_feed(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/camera-3/stop')
+def stopCam3():
+    global stop_cam_3
+    stop_cam_3 = True
+    return "Camera 3 Stopped"
 
 @app.route('/camera-3/start-record')
 def recordCam3():
