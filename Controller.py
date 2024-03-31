@@ -3,19 +3,23 @@ import time
 from hcsr04sensor import sensor
 
 class Contoller():
-    def __init__(self, led_pin, ultra_pin, echo_pin, mag_pin):   
+    def __init__(self, led_pin, ultra_pin, echo_pin):   
         self.led_pin = led_pin
         self.ultra_pin = ultra_pin
         self.echo_pin = echo_pin
-        self.mag_pin = mag_pin
+
+        print(self.led_pin)
 
         GPIO.setwarnings(False)
-        GPIO.cleanup()
         GPIO.setmode(GPIO.BCM)
+        GPIO.setup(self.ultra_pin, GPIO.OUT)  
+        GPIO.setup(self.echo_pin, GPIO.IN) 
         GPIO.setup(self.led_pin, GPIO.OUT)
-        GPIO.setup(self.mag_pin, GPIO.OUT)
+        GPIO.setup(21, GPIO.OUT)
 
     def turn_on(self):
+        print("Turning ON!")
+        print(self.led_pin)
         GPIO.output(self.led_pin, True)
 
     def turn_off(self):
@@ -24,13 +28,12 @@ class Contoller():
     def read_ultrasonic(self):
         x = sensor.Measurement
         distance = x.basic_distance(self.ultra_pin, self.echo_pin)
-        time.sleep(0.1)
         return round(distance,2)
     
     def mag_lock(self):
-        GPIO.output(self.mag_pin, True)
+        GPIO.output(21, True)
         
     def mag_unlock(self):
-        GPIO.output(self.mag_pin, False)
+        GPIO.output(21, False)
 
     
