@@ -170,17 +170,17 @@ def get_logs():
 
 
 
-light_led_1 = 4
+light_led_1 = 12
 ultra_pin_1 = 17
 echo_pin_1 = 27
 mag_pin_1 = 21
 
-light_led_2 = 4
+light_led_2 = 12
 ultra_pin_2 = 20
 echo_pin_2 = 16
 mag_pin_2 = 21
 
-controller1 = Contoller(light_led_1,ultra_pin_1,echo_pin_1,mag_pin_1)
+controller1 = Contoller(light_led_1,ultra_pin_1,echo_pin_1)
 # controller2 = Contoller(light_led_2,ultra_pin_2,echo_pin_2,mag_pin_2)
 
 # opt = None
