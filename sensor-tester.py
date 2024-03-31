@@ -170,7 +170,7 @@ def get_logs():
 
 
 
-light_led_1 = 12
+light_led_1 = 4
 ultra_pin_1 = 17
 echo_pin_1 = 27
 mag_pin_1 = 21
