@@ -165,6 +165,8 @@ def camera_3_feed():
 @app.route('/camera-1')
 def cam1():
     """Video streaming route for camera 1."""
+    global stop_cam_1
+    stop_cam_1 = False
     return Response(camera_1_feed(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/camera-1/stop')
@@ -188,6 +190,8 @@ def stopRecordCam1():
 @app.route('/camera-2')
 def cam2():
     """Video streaming route for camera 2."""
+    global stop_cam_2
+    stop_cam_2 = False
     return Response(camera_2_feed(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/camera-2/stop')
@@ -211,6 +215,8 @@ def stopRecordCam2():
 @app.route('/camera-3')
 def cam3():
     """Video streaming route for camera 3."""
+    global stop_cam_3
+    stop_cam_3 = False
     return Response(camera_3_feed(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/camera-3/stop')
